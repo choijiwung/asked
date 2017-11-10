@@ -1,0 +1,30 @@
+<h1>질문을 입력하세요</h1>
+<form action = "question/create">
+<div>
+ <select name = "option">
+  <option value="noname">익명</option>
+  <option value="<%=session[:user_email]%>">공개</option>
+</select>
+</div>
+    <%if session[:user_email].nil?%>
+
+    질문자: <input type = "text" name = "user_name"></br>
+    <%end%>
+    내용 : <input type = "text" name = "content"> </br>
+
+    <input type = "submit" value = "질문하기">
+</form>
+
+<div class="card">
+    <div class="card-body"> 
+    <% @asks.each do |ask| %>
+    <%= ask.name %>님의글<br>
+    제목 :<%= ask.name%> </br>
+    내용 :<%= ask.content%></br>  
+    <a href='/question/index/'>[처음으로]</a> 
+    <a href='/question/modify/<%=ask.id%>'>[수정]</a> 
+    <a href='/question/destroy/<%= ask.id%>'>[삭제]</a></br> 
+    <hr>
+    <% end%>
+  </div>
+

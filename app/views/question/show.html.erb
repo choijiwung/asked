@@ -1,0 +1,7 @@
+    <div class="card-body"> 
+    <% @asks.each do |ask| %>
+    <%= ask.name %>님의글<br>
+    제목 :<%= ask.name%> </br>
+    내용 :<%= ask.content%>  
+    <% end%>
+<a href = "question/index">처음으로</a>
